@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>An X voice for Corporate Tools | Lily Blanch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Gochi+Hand&family=Poppins:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fff8ee;--ink:#1a1a2e;--tomato:#ff5a36;--pink:#ff8fb8;--lilac:#b8a4ff;--mint:#7be0c3;--butter:#ffe066;--grey:#6b6f85}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream) radial-gradient(#ecdfc8 1px,transparent 1.2px) 0 0/18px 18px;color:var(--ink);font:400 16px/1.55 Poppins,system-ui,sans-serif}
+h1,h2{font-family:Caprasimo,Georgia,serif;font-weight:400;margin:0}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+section{padding:34px 0}
+h2{font-size:clamp(26px,5vw,38px);color:var(--tomato);text-shadow:2px 2px 0 var(--ink);margin-bottom:14px}
+.mono{font-family:"Space Mono",monospace}
+.card{background:#fff;border:2px solid var(--ink);border-radius:16px;box-shadow:6px 6px 0 var(--ink);padding:18px}
+button{font:inherit;cursor:pointer;color:var(--ink)}
+.btn{background:var(--butter);border:2px solid var(--ink);border-radius:999px;padding:8px 16px;font-weight:600;box-shadow:3px 3px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+:focus-visible{outline:3px solid var(--tomato);outline-offset:3px}
+nav{position:sticky;top:0;z-index:5;background:var(--cream);border-bottom:2px solid var(--ink)}
+nav .wrap{display:flex;gap:8px;overflow-x:auto;padding:10px 20px}
+nav a{white-space:nowrap;color:var(--ink);text-decoration:none;font:700 12px "Space Mono",monospace;border:2px solid var(--ink);border-radius:999px;padding:4px 12px;background:#fff}
+nav a:hover{background:var(--mint)}
+.hero{margin:28px 0 8px;border:2.5px solid var(--ink);border-radius:28px;box-shadow:8px 8px 0 var(--ink);background:linear-gradient(120deg,var(--tomato),var(--pink));padding:36px 28px;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(40px,10vw,76px);line-height:1;color:#fff;text-shadow:3px 3px 0 var(--ink)}
+.hero p{max-width:460px;font-weight:500;margin:14px 0 18px}
+.pill{display:inline-block;background:#fff;border:2px solid var(--ink);border-radius:999px;padding:3px 12px;font:700 12px "Space Mono",monospace;box-shadow:2px 2px 0 var(--ink)}
+.star{position:absolute;right:18px;top:18px;width:110px;height:110px;background:var(--butter);border:2px solid var(--ink);clip-path:polygon(50% 0,61% 20%,82% 10%,80% 33%,100% 38%,86% 55%,100% 72%,78% 76%,78% 98%,58% 86%,40% 100%,32% 80%,8% 86%,16% 64%,0 48%,20% 38%,18% 14%,38% 22%);display:grid;place-items:center;text-align:center;font:700 10px/1.2 "Space Mono",monospace;animation:spin 14s linear infinite}
+.star span{animation:spin 14s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.swap{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.swap .card{min-height:120px}
+.swap .c{background:#e6e4ee}.swap .f{background:var(--butter);font:400 20px/1.3 Caprasimo,serif}
+.swap small{display:block;font:700 11px "Space Mono",monospace;color:var(--grey);margin-bottom:6px}
+.swap .f small{color:var(--ink)}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:18px}
+.rules .card{transition:transform .2s}.rules .card:hover{transform:rotate(-1.5deg) translateY(-4px)}
+.rules b{display:block;margin:6px 0 4px}
+.num{display:inline-grid;place-items:center;width:30px;height:30px;border:2px solid var(--ink);border-radius:50%;background:#fff;font:400 16px Caprasimo,serif}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 18px}
+.chip{border:2px solid var(--ink);border-radius:999px;background:#fff;padding:3px 12px;font:700 12px "Space Mono",monospace}
+.chip[aria-pressed=true]{background:var(--ink);color:#fff}
+.posts{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px}
+.post{display:flex;flex-direction:column;gap:10px;transition:transform .2s}
+.post:nth-child(odd){transform:rotate(-.7deg)}.post:nth-child(even){transform:rotate(.7deg)}.post:hover{transform:rotate(0) translateY(-3px)}
+.who{display:flex;align-items:center;gap:10px}
+.av{width:36px;height:36px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font:700 11px "Space Mono",monospace}
+.who b{font-size:14px;line-height:1.1}.who small{display:block;color:var(--grey);font-size:11px}
+.who .pill{margin-left:auto;font-size:10px;padding:1px 9px}
+.txt{margin:0;flex:1;min-height:70px}
+.bar{display:flex;align-items:center;gap:8px;font:12px "Space Mono",monospace;margin-top:6px}
+.bar i{flex:1;height:14px;border:2px solid var(--ink);border-radius:6px;background:#fff;overflow:hidden}
+.bar i u{display:block;height:100%;width:0;transition:width 1.4s ease}
+.acts{display:flex;gap:6px;align-items:center;font:12px "Space Mono",monospace;color:var(--grey)}
+.acts button{background:none;border:0;padding:4px 6px;font:inherit;color:var(--grey);border-radius:8px}
+.acts button:hover{background:#f3ece0}
+.like[aria-pressed=true]{color:var(--tomato);font-weight:700}
+.like[aria-pressed=true] span{display:inline-block;animation:pop .35s}
+@keyframes pop{50%{transform:scale(1.7)}}
+.note{font:15px/1.4 "Gochi Hand",cursive;color:var(--tomato);font-size:19px}
+.checker{display:grid;gap:12px}
+.q{display:flex;align-items:center;justify-content:space-between;gap:10px;border:2px solid var(--ink);border-radius:12px;padding:10px 14px;background:#fff}
+.q button{border:2px solid var(--ink);border-radius:999px;min-width:64px;padding:2px 12px;font-weight:700;background:#e6e4ee}
+.q button[aria-pressed=true]{background:var(--mint)}
+.verdict{border:2px solid var(--ink);border-radius:14px;padding:14px;font-weight:600;box-shadow:4px 4px 0 var(--ink);transition:background .2s}
+ul.facts{padding-left:20px;margin:0}ul.facts li{margin:6px 0}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tabs button{border:2px solid var(--ink);border-radius:999px;padding:4px 14px;font-weight:600;background:#fff}
+.tabs button[aria-selected=true]{background:var(--lilac)}
+.bub{max-width:82%;padding:10px 14px;border:2px solid var(--ink);border-radius:16px;margin:8px 0}
+.bub.them{background:#e6e4ee;border-bottom-left-radius:4px}.bub.us{background:var(--mint);margin-left:auto;border-bottom-right-radius:4px}
+.weeks{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.weeks button{border:2px solid var(--ink);border-radius:14px;padding:14px 8px;font:400 22px Caprasimo,serif;box-shadow:4px 4px 0 var(--ink)}
+.weeks button[aria-pressed=true]{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+footer{padding:30px 0 50px;font:12px/1.6 "Space Mono",monospace;color:var(--grey)}
+footer a{color:var(--ink)}
+@media(max-width:600px){.swap{grid-template-columns:1fr}.weeks{grid-template-columns:1fr 1fr}.star{width:80px;height:80px;font-size:8px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a href="#funky">funky?</a><a href="#posts">posts</a><a href="#trends">trend filter</a><a href="#replies">replies</a><a href="#plan">30 days</a></div></nav>
+<main class="wrap">
+<header class="hero">
+  <div class="star"><span>FUNKY BUT<br>HELPFUL</span></div>
+  <h1>Hi,<br>Corporate Tools!</h1>
+  <p>An X voice starter kit: how I would sound, reply, and show up for your business owners. Click around, it is meant to be played with.</p>
+  <span class="pill">by Lily Blanch / Social Media Associate (X)</span>
+</header>
+
+<section id="funky">
+  <h2>What "funky" means here</h2>
+  <div class="card">Your post asks for a "fun, funky" written style. I read that as <b>writing with personality</b>: playful, specific, a little unexpected, and clearly written by a person. It does not mean random or loud. The goal is an account people enjoy replying to that is still clear and helpful first.</div>
+  <div class="swap" aria-live="polite">
+    <div class="card c"><small>CORPORATE</small><span id="corp"></span></div>
+    <div class="card f"><small>FUNKY (BUT HELPFUL)</small><span id="funk"></span></div>
+  </div>
+  <p><button class="btn" id="swapBtn">Funk up another one</button> <span class="note">same message, way more fun</span></p>
+  <div class="rules">
+    <div class="card" style="background:var(--mint)"><span class="num">1</span><b>Plain first, funny second</b>If a joke makes the answer harder to find, the joke goes.</div>
+    <div class="card" style="background:var(--lilac)"><span class="num">2</span><b>Punch at the paperwork</b>Never at the customer. The admin is the villain.</div>
+    <div class="card" style="background:var(--pink)"><span class="num">3</span><b>Short, specific, human</b>One idea per post. Write like a helpful friend.</div>
+    <div class="card" style="background:var(--butter)"><span class="num">4</span><b>Dry and warm, never edgy</b>Witty enough to remember, safe for a business account.</div>
+  </div>
+</section>
+
+<section id="posts">
+  <h2>Sample posts</h2>
+  <p>Filter by format, like a post, copy one, or hit <b>another take</b> to see a different angle on the same idea. <span class="note">drafts! I would tune them with your team.</span></p>
+  <div class="chips" id="chips"></div>
+  <div class="posts" id="posts-grid"></div>
+</section>
+
+<section id="trends">
+  <h2>Riding trends without being cringe</h2>
+  <div class="card">
+    <b class="mono">WHAT I FOUND (AS OF OCT 23, 2026)</b>
+    <ul class="facts">
+      <li>TikTok trends mostly peak within 7 to 10 days, and format-based trends last longer than sound-based ones.</li>
+      <li>About one in three consumers call brands jumping on viral trends embarrassing (Sprout Social, 2025).</li>
+      <li>This month: Halloween lands on a Saturday and the World Series starts Oct 23.</li>
+      <li>POV videos and loading-percentage edits are among the formats creators are copying this week.</li>
+    </ul>
+    <small class="mono" style="color:var(--grey)">sources: NewEngen, SocialPilot, Virlo, Sprout Social via Busyseed</small>
+  </div>
+  <h3 style="margin:22px 0 6px">Try my 3-question filter</h3>
+  <p style="margin-top:0">Pick a trend, or flip the answers yourself.</p>
+  <p id="scen"></p>
+  <div class="checker" id="checker"></div>
+  <div class="verdict" id="verdict" aria-live="polite"></div>
+</section>
+
+<section id="replies">
+  <h2>Reply playbook</h2>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="card" id="chat" aria-live="polite"></div>
+</section>
+
+<section id="plan">
+  <h2>First 30 days</h2>
+  <div class="weeks" id="weeks"></div>
+  <div class="card" id="weekText" style="margin-top:18px" aria-live="polite"></div>
+  <p style="margin-top:20px"><b>Always:</b> find where business owners already talk (new LLC owners, solo founders, startup communities, bookkeepers and accountants) and join in helpfully.</p>
+</section>
+</main>
+<footer><div class="wrap">Sample copy for illustration. Facts, deadlines and legal details would be checked with the Corporate Tools team before anything goes live.<br>Made by Lily Blanch / <a href="https://www.instagram.com/by.blanch">@by.blanch</a> / <a href="https://byblanch.framer.website">byblanch.framer.website</a></div></footer>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s), colors={mint:"#7be0c3",lilac:"#b8a4ff",butter:"#ffe066",pink:"#ff8fb8",tomato:"#ff5a36"};
+// corporate vs funky
+const pairs=[["We are pleased to assist you with your compliance needs.","Paperwork? Hand it over. We have got it from here."],["Please be advised that a filing deadline is approaching.","Psst. A deadline is sneaking up on you. We have your back."],["Our support team is available to answer your inquiries.","Got a question? Ask away. Real humans, plain answers."]];
+let pi=0;function showPair(){$("#corp").textContent=pairs[pi][0];$("#funk").textContent=pairs[pi][1]}
+$("#swapBtn").onclick=()=>{pi=(pi+1)%pairs.length;showPair()};showPair();
+
+// posts
+const posts=[
+{tag:"POV",c:"mint",t:["POV: you handed off the paperwork and your to-do list is just... lunch.","POV: it is 4pm and your biggest decision is coffee, because the paperwork is handled.","POV: you open your inbox and nothing in it is a deadline."]},
+{tag:"Loading bar",c:"lilac",bars:1,t:["Paperwork stress, before and after us:","Mood before and after handing us the admin:"]},
+{tag:"Seasonal",c:"butter",t:["Scariest thing in a small business owner's inbox? Not ghosts. A deadline you forgot. Happy Halloween from the team that keeps your paperwork un-haunted.","Costume idea: a business owner who filed everything early. Nobody will believe it.","Trick: forgetting a deadline. Treat: not having to remember it. Choose treat."],note:"Time-sensitive: swap after Oct 31."},
+{tag:"Meme voice",c:"pink",t:["Business owners: \"I'll deal with it later.\" Later, arriving with a clipboard: \"Hello.\"","Business owners at 9am: \"I will handle the paperwork today.\" At 5pm: \"Tomorrow me is very capable.\"","\"I will definitely remember that deadline.\" Famous last words."]},
+{tag:"Evergreen",c:"mint",t:["Your to-do list is not a personality. Hand us the admin and go build the thing.","You started a business to build something, not to become fluent in forms. We speak forms. Go build.","Hot take: admin should be the boring part of your week, not the stressful part."]},
+{tag:"Reply bait",c:"butter",t:["Small businesses are the whole point. What are you building this week? Tell us. We are nosy (supportive).","Drop what you are working on this week. We are rooting for you (and a little nosy).","New business owners: what do you wish someone had told you on day one? We are listening."]}
+];
+const grid=$("#posts-grid"),chips=$("#chips");let filter="All";
+function render(){grid.innerHTML="";posts.forEach((p,i)=>{if(filter!=="All"&&p.tag!==filter)return;
+ p.i=p.i||0;p.l=p.l||0;const el=document.createElement("article");el.className="card post";
+ el.innerHTML=`<div class="who"><div class="av" style="background:${colors[p.c]}">CT</div><div><b>Corporate Tools</b><small>now</small></div><span class="pill" style="background:${colors[p.c]}">${p.tag}</span></div><p class="txt"></p>${p.bars?'<div class="bar"><span>before</span><i><u data-w="90" style="background:#ff5a36"></u></i><span>90%</span></div><div class="bar"><span>after&nbsp;</span><i><u data-w="6" style="background:#7be0c3"></u></i><span>6%</span></div>':""}${p.note?`<small class="mono" style="color:#6b6f85">${p.note}</small>`:""}<div class="acts"><button class="like" aria-pressed="${!!p.liked}"><span>&#9829;</span> like</button><button class="again">another take</button><button class="copy">copy</button></div>`;
+ const txt=$(".txt",el);txt.textContent=p.t[p.i];
+ $(".like",el).onclick=e=>{p.liked=!p.liked;e.currentTarget.setAttribute("aria-pressed",p.liked)};
+ $(".again",el).onclick=()=>{p.i=(p.i+1)%p.t.length;txt.textContent=p.t[p.i]};
+ $(".copy",el).onclick=e=>{navigator.clipboard&&navigator.clipboard.writeText(p.t[p.i]);e.currentTarget.textContent="copied!";setTimeout(()=>e.target.textContent="copy",1200)};
+ grid.appendChild(el)});
+ const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){const u=x.target;u.style.width=u.dataset.w+"%";io.unobserve(u)}}));
+ grid.querySelectorAll("u[data-w]").forEach(u=>io.observe(u))}
+["All",...new Set(posts.map(p=>p.tag))].forEach(t=>{const b=document.createElement("button");b.className="chip";b.textContent=t;b.setAttribute("aria-pressed",t==="All");b.onclick=()=>{filter=t;chips.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));render()};chips.appendChild(b)});render();
+
+// trend filter
+const qs=["Does it sound like us?","Does it help or delight a business owner?","Can we post it within 48 hours?"],ans=[true,true,true];
+const scen=[["Halloween meme",[1,1,1]],["Viral dance sound",[0,0,1]],["Meme tied to sad news",[0,0,1]],["A POV format",[1,1,1]]];
+const ck=$("#checker");
+function drawQ(){ck.innerHTML="";qs.forEach((q,i)=>{const d=document.createElement("div");d.className="q";d.innerHTML=`<span>${i+1}. ${q}</span><button aria-pressed="${ans[i]}">${ans[i]?"Yes":"No"}</button>`;$("button",d).onclick=()=>{ans[i]=!ans[i];drawQ()};ck.appendChild(d)});
+ const ok=ans.every(Boolean),v=$("#verdict");v.style.background=ok?"#7be0c3":"#ff8fb8";v.textContent=ok?"Post it. Adapt it to paperwork, and ship it within 48 hours.":"Skip it. Trends come back, trust does not."}
+const sc=$("#scen");scen.forEach(([n,a])=>{const b=document.createElement("button");b.className="chip";b.style.marginRight="8px";b.textContent=n;b.onclick=()=>{a.forEach((v,i)=>ans[i]=!!v);drawQ()};sc.appendChild(b)});drawQ();
+
+// replies
+const chats=[["A confused owner",[["them","ok I have no idea what I'm supposed to file and I'm kind of panicking"],["us","Totally fair, this stuff is not exactly intuitive. Short version: [plain answer]. Want the full walkthrough? DM us and we will point you to the right place."]]],
+["A frustrated customer",[["them","this is the third time I've had to chase this. not happy."],["us","That is not the experience we want you to have. Sending you a DM now so we can sort it out properly."]]],
+["A troll",[["them","lol your company is useless"],["us","(Best move: no reply, or one light, kind line. Never argue. Abusive accounts get muted, blocked or reported, and the team is told.)"]]]];
+const tabs=$("#tabs"),chat=$("#chat");
+chats.forEach(([n,m],i)=>{const b=document.createElement("button");b.textContent=n;b.setAttribute("role","tab");b.onclick=()=>{tabs.querySelectorAll("button").forEach(x=>x.setAttribute("aria-selected",x===b));chat.innerHTML=m.map(([w,t])=>`<div class="bub ${w}">${t}</div>`).join("")};tabs.appendChild(b);if(!i)b.click()});
+
+// 30 days
+const wk=[["Week 1","Listen","Learn the voice, gather the questions customers ask most, and audit what already works on X.","mint"],["Week 2","Shape","Pitch three series: a plain-English paperwork tip, Ask Us Anything, and a small business spotlight.","lilac"],["Week 3","Test","Post, reply, and see which hooks and formats start real conversations.","pink"],["Week 4","Learn","Read X analytics (replies, engagement rate, profile visits, link clicks) and keep what works.","butter"]];
+const wb=$("#weeks"),wt=$("#weekText");
+wk.forEach(([w,t,d,c],i)=>{const b=document.createElement("button");b.style.background=colors[c];b.innerHTML=`<small class="mono" style="display:block;font-size:11px">${w.toUpperCase()}</small>${t}`;b.onclick=()=>{wb.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));wt.innerHTML=`<b>${w}: ${t}.</b> ${d}`};wb.appendChild(b);if(!i)b.click()});
+</script>
+</body>
+</html>
